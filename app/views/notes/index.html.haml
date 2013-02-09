@@ -1,23 +1,29 @@
 .container
   %section{:id => :main, :'ng-controller' => 'NoteController'}
-    %form.well.form-inline{:'ng-submit' => 'addNote()'}
-      %input{ :type => :text,
-              :class => :span10,
-              :placeholder => 'Enter new notes',
-              :'ng-model' => 'noteDescription'  }
-      %input{ :type => :submit,
-              :class => [:btn, :'btn-primary'],
-              :value => 'Add' }
+    %form{:id => :'note-form', :class => [:well, :'form-inline'], :'ng-submit' => 'addNote()'}
+      %input{ :type           => :text,
+              :class          => :span10,
+              :autocapitalize => :off,
+              :autocorrect    => :off,
+              :autocomplete   => :off,
+              :placeholder    => 'Enter new notes',
+              :'ng-model'     => 'noteDescription'  }
+
+      %input{ :type   => :submit,
+              :class  => [:btn, :'btn-primary'],
+              :value  => 'Add' }
 
     %fieldset
       %legend
         Notes
-        %span.label
+        %span{:class => :label}
           {{ notes.length }}
-      %ul{:class => [:unstyled, :clearfix]}
+      %ul{:id => 'notes-list', :class => [:unstyled, :clearfix]}
         %li{:class => :clearfix, :'ng-repeat' => 'note in notes'}
           %p{:class => :span10}
-            {{ note.description }}
-            \-
-            {{ note.createdAt }}
+            %span{:class => :description}
+              {{ note.description }}
+            %time{:class => :date}
+              %i.icon-time
+              {{ note.createdAt }}
           %i{:class => [:'icon-trash', :'pull-right'], :'ng-click' => 'deleteNote($index)', :'ng-model' => 'noteDescription'}
