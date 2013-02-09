@@ -1,8 +1,23 @@
-%section#notes-list
-  %ul
-    %li.item
-      .checkbox
-        %input{:type => :checkbox}
-      %p.description
-        Buy groceries for dinner
-      
+.container
+  %section{:id => :main, :'ng-controller' => 'NoteController'}
+    %form.well.form-inline{:'ng-submit' => 'addNote()'}
+      %input{ :type => :text,
+              :class => :span10,
+              :placeholder => 'Enter new notes',
+              :'ng-model' => 'noteDescription'  }
+      %input{ :type => :submit,
+              :class => [:btn, :'btn-primary'],
+              :value => 'Add' }
+
+    %fieldset
+      %legend
+        Notes
+        %span.label
+          {{ notes.length }}
+      %ul{:class => [:unstyled, :clearfix]}
+        %li{:class => :clearfix, :'ng-repeat' => 'note in notes'}
+          %p{:class => :span10}
+            {{ note.description }}
+            \-
+            {{ note.createdAt }}
+          %i{:class => [:'icon-trash', :'pull-right'], :'ng-click' => 'deleteNote($index)', :'ng-model' => 'noteDescription'}

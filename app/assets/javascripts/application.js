@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require underscore
+//= require moment
 //= require angular.min
 // require angle-up
 //= require_tree ./angular
