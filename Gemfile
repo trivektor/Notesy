@@ -17,6 +17,7 @@ group :assets do
   gem "angular-rails"
   gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
   gem "font-awesome-rails"
+  gem 'underscore-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
