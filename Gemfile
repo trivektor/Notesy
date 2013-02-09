@@ -18,6 +18,7 @@ group :assets do
   gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
   gem "font-awesome-rails"
   gem 'underscore-rails'
+  gem 'momentjs-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

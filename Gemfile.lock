@@ -61,6 +61,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.19)
+    momentjs-rails (1.7.2)
+      railties (~> 3.1)
     multi_json (1.5.0)
     polyglot (0.3.3)
     rack (1.4.4)
@@ -119,6 +121,7 @@ DEPENDENCIES
   font-awesome-rails
   haml
   jquery-rails
+  momentjs-rails
   rails (= 3.2.5)
   sass
   sass-rails (~> 3.2.3)
