@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 <head>
   <title>NotesApp</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -7,15 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header id="header">
-  <h1>
-    <!-- <svg class="icon" width="24" height="24" fill="none" stroke-width="0">
-      <rect x="0" y="0" width="24" height="24" stroke="white" stroke-width="3" stroke-linejoin="round" fill="none" rx="6" ry="6" />
-    </svg> -->
-    Notes
-  </h1>
-</header>
-<!-- <div class="ripped-notes"></div> -->
+<%= render :partial => 'shared/header' %>
 <%= yield %>
 
 </body>
