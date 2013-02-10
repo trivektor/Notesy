@@ -16,7 +16,7 @@
     %fieldset
       %legend
         Notes
-        %span{:class => :label}
+        %span{:class => [:label, :'label-warning']}
           {{ notes.length }}
       %ul{:id => 'notes-list', :class => [:unstyled, :clearfix]}
         %li{:class => :clearfix, :'ng-repeat' => 'note in notes'}
