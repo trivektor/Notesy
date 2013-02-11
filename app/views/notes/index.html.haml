@@ -14,10 +14,13 @@
               :value  => 'Add' }
 
     %fieldset
-      %legend
-        Notes
+      %legend.clearfix
+        %span Notes
         %span{:class => [:label, :'label-warning']}
           {{ notes.length }}
+        %span{:class => [:label, :'label-warning', :'pull-right'], :'ng-click' => 'deleteAll()'}
+          Remove all
+
       %ul{:id => 'notes-list', :class => [:unstyled, :clearfix]}
         %li{:class => :clearfix, :'ng-repeat' => 'note in notes'}
           %p{:class => :span10}
@@ -26,4 +29,4 @@
             %time{:class => :date}
               %i.icon-time
               {{ note.createdAt }}
-          %i{:class => [:'icon-trash', :'pull-right'], :'ng-click' => 'deleteNote($index)', :'ng-model' => 'noteDescription'}
+          %i{:class => [:'icon-trash', :'pull-right'], :'ng-click' => 'deleteNote(note.id)', :'ng-model' => 'noteDescription'}

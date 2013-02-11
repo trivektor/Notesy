@@ -17,7 +17,7 @@ function NoteController($scope) {
   }
 
   $scope.store = new IDBStore({
-    storeName: 'Notesy1',
+    storeName: 'Notesy',
     storePrefix: 'IDBWrapper-',
     dbVersion: 1,
     keyPath: 'id',
@@ -33,12 +33,31 @@ function NoteController($scope) {
       createdAt   : moment().format("MMM Do YY")
     }
 
-    $scope.store.put(note_obj)
-    $scope.noteDescription = '';
-    getAllFromDB();
+    $scope.store.put(note_obj, function(id) {
+      $scope.noteDescription = '';
+      getAllFromDB();
+    }, function(error) {
+      console.log(error);
+    })
   }
 
-  $scope.deleteNote = function(index) {
-    $scope.notes.splice(index, 1);
+  $scope.deleteNote = function(id) {
+    $scope.store.remove(
+      id,
+      function(result) {
+        getAllFromDB();
+      },
+      function(error) {
+        console.log('Error while deleting note: ' + error);
+      }
+    );
+  }
+
+  $scope.deleteAll = function() {
+    $scope.store.clear(function() {
+      getAllFromDB();
+    }, function(error) {
+      console.log('Error occured while clearing all: ' + error);
+    });
   }
 }
